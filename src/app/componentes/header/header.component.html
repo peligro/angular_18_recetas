@@ -1,0 +1,94 @@
+   <!-- Preloader -->
+   <div id="preloader">
+    <i class="circle-preloader"></i>
+    <img src="img/core-img/salad.png" alt="">
+</div>
+
+
+
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+
+    <!-- Top Header Area -->
+    <div class="top-header-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-between">
+                <!-- Breaking News -->
+                <div class="col-12 col-sm-6">
+                    <div class="breaking-news">
+                        <div id="breakingNewsTicker" class="ticker">
+                            <ul>
+                                <li><a href="mailto:info@recetarioflaite.cl">{{'info@recetarioflaite.cl'}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Social Info -->
+                <div class="col-12 col-sm-6">
+                    <div class="top-social-info text-right">
+                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar Area -->
+    <div class="delicious-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="deliciousNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/"><img src="img/core-img/logo2.png" alt="" style="width: 144px; height: 65px;"></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li routerLinkActive="active"><a href="/" title="Home">Home</a></li>
+                                <li routerLinkActive="active"><a href="/sobre-nosotros" title="Sobre nosotros">Sobre nosotros</a></li>
+                                <li routerLinkActive="active"><a href="/recetas" title="Recetas">Recetas</a></li>
+                                <li routerLinkActive="active"><a href="/contactanos" title="Contáctanos">Contáctanos</a></li>
+                                @if(logueado==false)
+                                {
+                                  <li routerLinkActive="active"><a href="/login" title="Login">Login</a></li>
+                                  <li routerLinkActive="active"><a href="/registro" title="Registro">Registro</a></li>
+                                }
+                                @if(logueado)
+                                {
+                                  <li routerLinkActive="active"><a href="/panel" title="Hola {{nombre}}">Hola {{nombre}}</a></li>
+                                  <li routerLinkActive="active"><a  (click)="salir()" title="Cerrar sesión">Cerrar sesión</a></li>
+                                }
+
+                            </ul>
+
+
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ##### Header Area End ##### -->

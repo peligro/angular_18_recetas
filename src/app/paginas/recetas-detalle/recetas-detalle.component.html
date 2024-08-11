@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+ <!-- ##### Breadcumb Area Start ##### -->
+ <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+  <div class="container h-100">
+      <div class="row h-100 align-items-center">
+          <div class="col-12">
+              <div class="breadcumb-text text-center">
+                  <h2>{{datos?.nombre}}</h2>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<div class="receipe-post-area section-padding-80">
+
+
+  <!-- Receipe Slider -->
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+            <img src="{{datos?.foto}}" alt="">
+          </div>
+      </div>
+  </div>
+
+  <!-- Receipe Content Area -->
+  <div class="receipe-content-area">
+      <div class="container">
+
+          <div class="row">
+              <div class="col-12 col-md-8">
+                  <div class="receipe-headline my-5">
+                      <span>{{datos?.fecha}}</span>
+                      <h2>{{datos?.nombre}}</h2>
+                      <div class="receipe-duration">
+                          <h6>Tiempo preparación: 15 mins</h6>
+                          <h6>Categoría: {{datos?.categoria}}</h6>
+                          <h6>Creada por: {{datos?.usuario}}</h6>
+                      </div>
+                  </div>
+              </div>
+
+
+          </div>
+
+          <div class="row">
+              <div class="col-12 col-lg-12">
+                  <!-- Single Preparation Step -->
+                  <div class="single-preparation-step d-flex">
+
+                      <p>{{datos?.detalle}}</p>
+                  </div>
+
+              </div>
+
+          </div>
+
+
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>

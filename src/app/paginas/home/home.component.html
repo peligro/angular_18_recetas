@@ -1,0 +1,86 @@
+<app-header></app-header>
+
+ <!-- ##### Breadcumb Area Start ##### -->
+ <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+  <div class="container h-100">
+      <div class="row h-100 align-items-center">
+          <div class="col-12">
+              <div class="breadcumb-text text-center">
+                  <h2>Recetas flaites - Desarrollado con Angular 18</h2>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+  <!-- ##### Top Catagory Area Start ##### -->
+  <section class="top-catagory-area section-padding-80-0">
+      <div class="container">
+
+      </div>
+  </section>
+  <!-- ##### Top Catagory Area End ##### -->
+
+  <!-- ##### Best Receipe Area Start ##### -->
+  <section class="best-receipe-area">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <div class="section-heading">
+                      <h3>Últimas recetas publicadas</h3>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+
+              @switch(datos.state.status())
+              {
+                @case("loading")
+                {
+                  <img src="img/img/load.gif" alt="" />
+                }
+                @case("error")
+                  {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Error!</strong> Ocurrió un error inesperado, vuelta a intentarlo más tarde
+                      <button type="button" title="Cerrar" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  }
+                @default
+                {
+                  @for(dato of datos.state().datos; track dato)
+                  {
+                    <!-- Single Best Receipe Area -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                      <div class="single-best-receipe-area mb-30">
+                          <img src="{{dato.foto}}" alt="{{dato.nombre}}" class="foto-mini" />
+                          <div class="receipe-content">
+                              <a href="/recetas/detalle/{{dato.slug}}" title="{{dato.nombre}}">
+                                  <h5>{{dato.nombre}}</h5>
+                              </a>
+                          </div>
+                      </div>
+                    </div>
+                  }
+                }
+              }
+
+
+
+
+
+          </div>
+      </div>
+  </section>
+  <!-- ##### Best Receipe Area End ##### -->
+
+<app-footer></app-footer>
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('../public/style.css');
+.foto-mini
+{
+  width: 350px;
+  height: 303px;
+}
+.centrado
+{
+  text-align: center;
+}

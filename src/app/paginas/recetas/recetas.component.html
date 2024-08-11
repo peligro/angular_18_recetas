@@ -1,0 +1,153 @@
+<app-header></app-header>
+
+ <!-- ##### Breadcumb Area Start ##### -->
+ <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb4.jpg);">
+  <div class="container h-100">
+      <div class="row h-100 align-items-center">
+          <div class="col-12">
+              <div class="breadcumb-text text-center">
+                  <h2>Recetas</h2>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+  <!-- ##### Top Catagory Area Start ##### -->
+  <section class="top-catagory-area section-padding-80-0">
+      <div class="container">
+<!--buscador-->
+  <!-- Receipe Post Search -->
+  <div class="receipe-post-search mb-80">
+    <div class="container">
+        <form name="form" id="form" (submit)="enviar()" #formulario="ngForm">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <select name="categoria_id" [(ngModel)]="modelo.categoria_id" #categoria_id="ngModel" class="form-control" pattern="[1-9]\d*" required="true">
+                      <option value="0">Seleccione.....</option>
+                       @for(categoria of categorias;track categoria.id)
+                       {
+                        <option value="{{categoria.id}}">{{categoria.nombre}}</option>
+                       }
+                    </select>
+                    @if(categoria_id.invalid && (categoria_id.dirty || categoria_id.touched))
+                    {
+                        <div class="alert alert-danger">
+                            @if(categoria_id.errors){
+                                <div>
+                                    Debe seleccionar una categoria
+                                </div>
+                            }
+
+                        </div>
+                    }
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <input type="text" name="search" [(ngModel)]="modelo.search" #search="ngModel"  class="form-control" placeholder="Buscar...." />
+
+                </div>
+                <div class="col-12 col-lg-3 text-right">
+                    <button type="submit" class="btn delicious-btn" title="Buscar" [disabled]="!formulario.form.valid"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+  <!--/buscador-->
+      </div>
+  </section>
+  <!-- ##### Top Catagory Area End ##### -->
+
+  <!-- ##### Best Receipe Area Start ##### -->
+  <section class="best-receipe-area">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <div class="section-heading">
+                      <h3>Todas nuestras recetas</h3>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+
+              @switch(datos.state.status())
+              {
+                @case("loading")
+                {
+
+                  <div id="preloader">
+                    <i class="circle-preloader"></i>
+                    <img src="img/img/load.gif" alt="" />
+                </div>
+                }
+                @case("error")
+                  {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Error!</strong> Ocurrió un error inesperado, vuelta a intentarlo más tarde
+                      <button type="button" title="Cerrar" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  }
+                @default
+                {
+                  @for(dato of datos.state().datos; track dato)
+                  {
+                    <!-- Single Best Receipe Area -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                      <div class="single-best-receipe-area mb-30">
+                          <img src="{{dato.foto}}" alt="{{dato.nombre}}"  />
+                          <div class="receipe-content">
+                              <a href="/recetas/detalle/{{dato.slug}}" title="{{dato.nombre}}">
+                                  <h5>{{dato.nombre}}</h5>
+                              </a>
+                          </div>
+                      </div>
+                    </div>
+                  }
+                  <!--paginación-->
+                  <hr style=" border-top: 1px solid red;" />
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+
+                        @if(page>1)
+                        {
+                          <li  class="page-item"><a class="page-link" href="/recetas?page={{page-1}}">Anterior</a></li>
+                        }
+
+
+
+
+                        @if(datos.state().datos[0].cuantos>paginacion )
+                        {
+                          <li  class="page-item"><a class="page-link" href="/recetas?page={{page+1}}">Siguiente</a></li>
+                        }
+
+
+
+                    </ul>
+                </nav>
+                  <!--/paginación-->
+                }
+              }
+
+
+
+
+
+          </div>
+      </div>
+  </section>
+  <!-- ##### Best Receipe Area End ##### -->
+
+<app-footer></app-footer>
+
+
+
+
+
+
+
+

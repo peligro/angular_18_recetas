@@ -1,0 +1,82 @@
+<app-header></app-header>
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb4.jpg);">
+  <div class="container h-100">
+      <div class="row h-100 align-items-center">
+          <div class="col-12">
+              <div class="breadcumb-text text-center">
+                  <h2>Panel</h2>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+
+<!-- ##### Contact Form Area Start ##### -->
+<div class="contact-area section-padding-0-80">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="section-heading">
+                  <h3>Panel de control</h3>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-12">
+            <div class="receipe-ratings text-right my-5">
+              <a href="/panel-crear" class="btn delicious-btn"><i class="fas fa-plus"></i> Crear</a>
+            </div>
+          </div>
+          <hr />
+          <div class="col-12">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Categoría</th>
+                    <th>Nombre</th>
+                    <th>Tiempo</th>
+                    <th>Detalle</th>
+                    <th>Foto</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for(dato of datos; track dato.id)
+                  {
+                    <tr>
+                      <td>{{dato.id}}</td>
+                      <td>{{dato.categoria}}</td>
+                      <td>{{dato.nombre}}</td>
+                      <td>{{dato.tiempo}}</td>
+                      <td>{{dato.detalle}}</td>
+                      <td class="text-center">
+                        <a class="thumbnail fancybox slide" rel="ligthbox" [href]="dato.foto">
+                          <i class="fas fa-image"></i>
+                        </a>
+                      </td>
+                      <td class="text-center">
+                        <a [href]="'/panel-editar-foto/'+dato.slug" title="Editar foto"><i class="fas fa-pen-square"></i></a>
+                        &nbsp;&nbsp;
+                        <a [href]="'/panel-editar/'+dato.slug" title="Editar"><i class="fas fa-edit"></i></a>
+                        &nbsp;&nbsp;
+                        <a (click)="eliminar(dato.id)" title="Eliminar"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>

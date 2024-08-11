@@ -1,0 +1,150 @@
+<app-header></app-header>
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb4.jpg);">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12">
+        <div class="breadcumb-text text-center">
+          <h2>Panel - crear receta</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+
+<!-- ##### Contact Form Area Start ##### -->
+<div class="contact-area section-padding-0-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-heading">
+          <h3>Crea tus recetas</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8">
+        <div class="contact-form-area">
+          <form name="form" id="form" (submit)="enviar()" #formulario="ngForm">
+            <div class="row">
+              <div class="col-12 col-lg-12">
+                <label for="categoria_id">Categoría</label>
+                <select name="categoria_id" class="form-control" [(ngModel)]="modelo.categoria_id"
+                  #categoria_id="ngModel" pattern="[1-9]\d*" required="true">
+                  <option value="0">Seleccione.....</option>
+                  @for(categoria of categorias; track categoria.id)
+                  {
+                  <option value="{{categoria.id}}">
+                    {{categoria.nombre}}
+                  </option>
+                  }
+
+                </select>
+                @if(categoria_id.invalid && (categoria_id.dirty || categoria_id.touched))
+                {
+                <div class="alert alert-danger">
+                  @if(categoria_id.errors){
+                  <div>
+                    Debe seleccionar una categoría
+                  </div>
+                  }
+
+                </div>
+                }
+              </div>
+
+              <div class="col-12 col-lg-12">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" name="nombre" [(ngModel)]="modelo.nombre" #nombre="ngModel"
+                  placeholder="Nombre" required="true" />
+                @if(nombre.invalid && (nombre.dirty || nombre.touched))
+                {
+                <div class="alert alert-danger">
+                  @if(nombre.errors)
+                  {
+                  <div>
+                    El campo nombre es obligatorio
+                  </div>
+                  }
+                </div>
+                }
+              </div>
+
+              <div class="col-12 col-lg-12">
+                <label for="tiempo">Tiempo</label>
+                <input type="text" class="form-control" name="tiempo" [(ngModel)]="modelo.tiempo" #tiempo="ngModel"
+                  placeholder="Tiempo" required="true" />
+                @if(tiempo.invalid && (tiempo.dirty || tiempo.touched))
+                {
+                <div class="alert alert-danger">
+                  @if(tiempo.errors)
+                  {
+                  <div>
+                    El campo Tiempo es obligatorio
+                  </div>
+                  }
+                </div>
+                }
+              </div>
+              <div class="col-12 col-lg-12">
+                <label for="detalle">Detalle</label>
+                <textarea name="detalle" class="form-control" [(ngModel)]="modelo.detalle" #detalle="ngModel" placeholder="Detalle"></textarea>
+                @if(detalle.invalid && (detalle.dirty || detalle.touched))
+                {
+                <div class="alert alert-danger">
+                  @if(detalle.errors)
+                  {
+                  <div>
+                    El campo Detalle es obligatorio
+                  </div>
+                  }
+                </div>
+                }
+              </div>
+              <div class="col-12 col-lg-12">
+                <label for="foto">Foto</label>
+               <input type="file" name="foto" class="form-control" [(ngModel)]="modelo.foto" #foto="ngModel" required="true" (change)="onFilechange($event)"  />
+                @if(foto.invalid && (foto.dirty || foto.touched))
+                {
+                <div class="alert alert-danger">
+                  @if(foto.errors)
+                  {
+                  <div>
+                    El campo Foto es obligatorio
+                  </div>
+                  }
+                </div>
+                }
+              </div>
+
+              @if(boton==0)
+              {
+              <div class="col-12 text-center">
+                <button class="btn delicious-btn mt-30" type="submit" title="Enviar"
+                  [disabled]="!formulario.form.valid">Enviar</button>
+                <hr />
+                <a href="/registro">¿No tienes cuenta aún?</a>
+              </div>
+              }
+
+              @if(boton==1)
+              {
+              <div class="col-12 text-center">
+                <img src="img/img/load.gif" alt="">
+              </div>
+              }
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ##### Contact Form Area End ##### -->
+
+
+
+<app-footer></app-footer>
